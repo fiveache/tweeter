@@ -1,6 +1,5 @@
 $(document).ready(() => {
-  // Using jQuery and an appropriate selector, register an event handler to the textarea element for the form inside of the .new-tweet section.
-  $('section.new-tweet textarea').keyup((e) => {
+  $('section.new-tweet textarea').on('input', (e) => {
     const counter = $('section.new-tweet textarea').siblings().filter('.counter');
     const counterVal = 140 - e.target.value.length;
     counter.text(counterVal);

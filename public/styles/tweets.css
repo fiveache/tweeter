@@ -1,7 +1,9 @@
 article.tweet {
+  position: relative;
   border: 1px #D1D1D1 solid;
   border-radius: 5px;
-  margin: .5rem 2rem;
+  margin: .5rem 2rem 1rem 2rem;
+  height: 15rem;
 }
 
 .tweet header {
@@ -34,7 +36,16 @@ article.tweet {
 }
 
 .tweet footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   border-top: 1px #F4F4F4 solid;
+}
+
+.tweet footer .tweet-icons {
+  visibility: hidden;
+  float: right;
+  margin: .25rem 1rem;
 }
 
 span.created-at {
@@ -45,7 +56,30 @@ span.created-at {
 }
 
 .user-avatar {
+  opacity: 0.75;
   width: 50px;
   height: 50px;
   border-radius: 5px;
+}
+
+/* Hover Event */
+article.tweet:hover {
+  border-color: #6B6B6B;
+}
+
+article.tweet:hover h2 {
+  color: #234651;
+}
+
+article.tweet:hover h3 {
+  color: #777777;
+
+}
+
+article.tweet:hover .user-avatar {
+  opacity: 1;
+}
+
+article.tweet:hover footer .tweet-icons {
+  visibility: visible;
 }
