@@ -14,40 +14,49 @@
 
   <!-- App CSS -->
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-
   <!-- Nav CSS -->
   <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
-
   <!-- New Tweet CSS -->
   <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
-
+  <!-- Tweet CSS -->
+  <link rel="stylesheet" href="/styles/tweets.css" type="text/css" />
   <!-- External JS -->
   <script type="text/javascript" src="/vendor/jquery-2.2.3.min.js"></script>
-
   <!-- App JS -->
   <script type="text/javascript" src="/scripts/app.js"></script>
+  <!-- Character Counter JS -->
+  <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
+
 </head>
 
 <body>
-
   <!-- Top nav bar (fixed) -->
   <nav id="nav-bar">
     <img class="logo" src="/images/bird.png">
     <span class="header">Tweeter</span>
   </nav>
-
   <!-- Page-specific (main) content here -->
   <main class="container">
     <section class="new-tweet">
       <h2>Compose Tweet</h2>
       <form method="POST" action="/tweets">
         <textarea name="text" placeholder="What are you humming about?"></textarea>
-        <input type="submit"  value="Tweet">
+        <input type="submit" value="Tweet">
         <span class="counter">140</span>
       </form>
     </section>
+    <section class="tweet-container">
+      <article class="tweet">
+        <header class="tweet-header">
+          <img class="user-avatar" src="images/user.png" alt="User Avatar">
+          <h2>David Lacho</h2>
+        </header>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+        <footer>
+        </footer>
+      </article>
+    </section>
   </main>
-
 </body>
 
 </html>
