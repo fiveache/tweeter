@@ -64,13 +64,14 @@ $(document).ready(() => {
   $('.new-tweet form').on('submit', function(e) {
     e.preventDefault();
     const queryResults = $(this).serialize();
+
     $.ajax({
         type: 'POST',
         url: '/tweets',
         data: queryResults,
       })
       .then((data) => {
-        $('.new-tweet form textarea').val('');
+        $('.new-tweet form textarea').val('').trigger('input');
         loadTweets()
           .then((data) => {
             const $tweet = createTweetElement(data[Object.keys(data).length - 1]);
@@ -79,6 +80,12 @@ $(document).ready(() => {
       });
   });
   // end $('.new-tweet form').on('submit');
+
+  $('span.compose-button').click((e) => {
+      $('section.new-tweet').slideToggle(300, ()=> {
+        $('section.new-tweet textarea ').focus();
+      });
+  });
 
   /*
    * =======================

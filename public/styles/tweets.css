@@ -33,6 +33,7 @@ article.tweet {
 
 .tweet p {
   padding: 1rem 2rem;
+  overflow-wrap: break-word;
 }
 
 .tweet footer {
