@@ -31,7 +31,7 @@ $(document).ready(() => {
       <p>${escapeCharacters(data.content.text)}</p>
       <footer>
         <span class="created-at">
-          ${``} Days Ago
+          ${Math.floor((Date.now() - new Date(data.created_at).getTime())/86400000)} Days Ago
         </span>
         <div class="tweet-icons">👍 🎺 💛</div>
       </footer>
