@@ -28,6 +28,7 @@ body {
   background-color: #fff;
   margin: auto;
   margin-top: 5rem;
+  min-height: 100vh;
   width: 28.125rem;
   overflow: auto;
 }

@@ -1,6 +1,12 @@
 $(document).ready(() => {
-  const escapeCharacters = (string) => {
-    const newString = string.replace(/\'/g, '&#39;').replace(/\"/g, '&quot;').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  // Escape characters for malicious html injected.
+  const escape = (string) => {
+    const newString = string
+      .replace(/\'/g, '&#39;')
+      .replace(/\"/g, '&quot;')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
     return newString;
   };
 
@@ -24,11 +30,11 @@ $(document).ready(() => {
     const htmlString = `
     <article class="tweet">
       <header class="clearfix">
-        <img class="user-avatar" src="${data.user.avatars.small}" alt="${data.user.name}' Avatar">
-        <h2>${data.user.name}</h2>
-        <h3>${data.user.handle}</h3>
+        <img class="user-avatar" src="${data.user.avatars.small}" alt="${escape(data.user.name)}' Avatar">
+        <h2>${escape(data.user.name)}</h2>
+        <h3>${escape(data.user.handle)}</h3>
       </header>
-      <p>${escapeCharacters(data.content.text)}</p>
+      <p>${escape(data.content.text)}</p>
       <footer>
         <span class="created-at">
           ${Math.floor((Date.now() - new Date(data.created_at).getTime())/86400000)} Days Ago
@@ -40,7 +46,27 @@ $(document).ready(() => {
     return htmlString;
   };
 
+  // Build out sample tweet
   const $tweet = createTweetElement(tweetData);
   $('#tweet-container').append($tweet);
+
+  // handle submit event
+
+  $('.new-tweet form').on('submit', function(e) {
+    e.preventDefault();
+    const queryResults = $(this).serialize();
+    const options = {
+      type: 'POST',
+      url: '/tweets',
+      data: queryResults,
+    };
+
+    $.ajax(options)
+      .then((data) => {
+        $('.new-tweet form textarea').val('');
+      });
+
+  });
+  // end $('.new-tweet form').on('submit');
 });
 // end $(document).ready()
