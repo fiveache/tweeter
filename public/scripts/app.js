@@ -1,4 +1,11 @@
 $(document).ready(() => {
+
+  /*
+   * =======================
+   * HELPER FUNCTIONS
+   * =======================
+   */
+
   // Escape characters for malicious html injected.
   const escape = (string) => {
     const newString = string
@@ -10,22 +17,7 @@ $(document).ready(() => {
     return newString;
   };
 
-  const tweetData = {
-    user: {
-      name: 'Newton',
-      avatars: {
-        small: 'https://vanillicon.com/788e533873e80d2002fa14e1412b4188_50.png',
-        regular: 'https://vanillicon.com/788e533873e80d2002fa14e1412b4188.png',
-        large: 'https://vanillicon.com/788e533873e80d2002fa14e1412b4188_200.png',
-      },
-      handle: '@SirIsaac',
-    },
-    content: {
-      text: 'If I have seen further it is by standing on the shoulders of giants',
-    },
-    created_at: 1461116232227,
-  };
-
+  // Creates a string of HTML that is the "tweet"
   const createTweetElement = (data) => {
     const htmlString = `
     <article class="tweet">
@@ -46,27 +38,58 @@ $(document).ready(() => {
     return htmlString;
   };
 
-  // Build out sample tweet
-  const $tweet = createTweetElement(tweetData);
-  $('#tweet-container').append($tweet);
+  // Returns a function that loads all tweets
+  const loadTweets = () => $.ajax({
+    type: 'GET',
+    url: '/tweets',
+  });
+
+  // Appends the HTML to the tweet container
+  const appendTweet = (tweetHtml) => {
+    $('#tweet-container').append(tweetHtml);
+  };
+
+
+  /*
+   * =======================
+   * EVENT HANDLERS
+   * =======================
+   */
 
   // handle submit event
 
   $('.new-tweet form').on('submit', function(e) {
     e.preventDefault();
     const queryResults = $(this).serialize();
-    const options = {
-      type: 'POST',
-      url: '/tweets',
-      data: queryResults,
-    };
-
-    $.ajax(options)
+    $.ajax({
+        type: 'POST',
+        url: '/tweets',
+        data: queryResults,
+      })
       .then((data) => {
         $('.new-tweet form textarea').val('');
+        loadTweets()
+          .then((data) => {
+            const $tweet = createTweetElement(data[Object.keys(data).length - 1]);
+            appendTweet($tweet);
+          })
       });
-
   });
   // end $('.new-tweet form').on('submit');
+
+  /*
+   * =======================
+   * Implementation
+   * =======================
+   */
+
+  // On load, gather tweets and display them.
+  loadTweets()
+    .then((data) => {
+      Object.keys(data).forEach((tweet) => {
+        appendTweet(createTweetElement(data[tweet]));
+      });
+    });
+
 });
 // end $(document).ready()

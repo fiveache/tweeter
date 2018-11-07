@@ -17,6 +17,10 @@ section.new-tweet textarea {
   padding: .5rem;
 }
 
+section.new-tweet form input:disabled {
+  color: #D1D1D1;
+}
+
 section.new-tweet .counter {
   float: right;
 }
