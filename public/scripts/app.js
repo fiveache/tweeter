@@ -9,8 +9,6 @@ $(document).ready(() => {
   // Escape characters for malicious html injected.
   const escape = (string) => {
     const newString = string
-      .replace(/\'/g, '&#39;')
-      .replace(/\"/g, '&quot;')
       .replace(/&/g, '&amp;')
       .replace(/</g, '&lt;')
       .replace(/>/g, '&gt;');
@@ -49,6 +47,11 @@ $(document).ready(() => {
     $('#tweet-container').append(tweetHtml);
   };
 
+  // Appends the HTML to the tweet container
+  const prependTweet = (tweetHtml) => {
+    $('#tweet-container').prepend(tweetHtml);
+  };
+
 
   /*
    * =======================
@@ -71,7 +74,7 @@ $(document).ready(() => {
         loadTweets()
           .then((data) => {
             const $tweet = createTweetElement(data[Object.keys(data).length - 1]);
-            appendTweet($tweet);
+            prependTweet($tweet);
           })
       });
   });
@@ -87,7 +90,7 @@ $(document).ready(() => {
   loadTweets()
     .then((data) => {
       Object.keys(data).forEach((tweet) => {
-        appendTweet(createTweetElement(data[tweet]));
+        prependTweet(createTweetElement(data[tweet]));
       });
     });
 
