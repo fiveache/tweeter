@@ -1,0 +1,47 @@
+#nav-bar {
+  position: fixed;
+  z-index: 2147483647;
+  top: 0;
+  height: $size-below-medium;
+  background-color: $color-turquoise;
+  width: 100%;
+  color: $color-vlightblue;
+  padding: 0 $size-above-small;
+  box-shadow: 0 1px 1px 1px $color-concretegrey;
+
+  .logo {
+    float: left;
+    height: $size-below-medium;
+    width: $size-below-medium;
+  }
+
+  .header {
+    float: left;
+    font-size: $size-above-small;
+    height: 100%;
+    line-height: $size-below-medium;
+    margin-left: 10px;
+  }
+
+  .compose-button {
+    float: right;
+    width: $size-medium;
+    height: 80%;
+    margin-top: $size-tiny;
+    margin-bottom: $size-tiny;
+    border: 1px $color-bluediane solid;
+    text-align: center;
+    background-color: $color-vlightblue;
+    padding-top: $size-below-small;
+    padding-left: $size-small;
+    color: $color-turquoise;
+    font-size: $size-small;
+    font-weight: 300;
+    border-radius: 5px;
+
+    &:hover {
+      background-color: $color-white;
+      color: $color-bluediane;
+    }
+  }
+}

@@ -1,0 +1,27 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  background-color: $color-light-grey;
+  color: $color-greenblue;
+  font-family: 'Roboto Condensed', sans-serif;
+  margin: 0;
+}
+
+.container {
+  background-color: $color-white;
+  margin: auto;
+  margin-top: $size-below-medium;
+  min-height: 100vh;
+  width: $size-biggest;
+  overflow: auto;
+}
+
+.clearfix {
+  overflow: auto;
+}
