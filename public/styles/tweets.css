@@ -2,18 +2,20 @@ article.tweet {
   position: relative;
   border: 1px #D1D1D1 solid;
   border-radius: 5px;
-  margin: .5rem 2rem 1rem 2rem;
   height: 15rem;
+  margin: .5rem 2rem 1rem;
 }
 
 .tweet header {
   background-color: #f3f3f3;
-  padding: .75rem;
   border-radius: 4px 4px 0 0;
+  height: 5rem;
+  overflow: hidden;
+  box-shadow: 0 .5px .5px .5px #D1D1D1;
+  padding: .75rem;
 }
 
-.user-avatar,
-.tweet header h2 {
+.user-avatar, .tweet header h2 {
   float: left;
 }
 
@@ -21,6 +23,7 @@ article.tweet {
   margin-top: 0;
   margin-left: .75rem;
   color: #657E85;
+  width: 10rem;
 }
 
 .tweet header h3 {
@@ -28,12 +31,12 @@ article.tweet {
   color: #A3A3A3;
   font-weight: 300;
   float: right;
-  margin-top: 0.5rem;
+  margin-top: .5rem;
 }
 
 .tweet p {
-  padding: 1rem 2rem;
   overflow-wrap: break-word;
+  padding: 1rem 2rem;
 }
 
 .tweet footer {
@@ -51,9 +54,9 @@ article.tweet {
 
 span.created-at {
   display: inline-block;
-  margin: .75rem 1rem;
   font-size: .75rem;
   font-weight: 300;
+  margin: .75rem 1rem;
 }
 
 .user-avatar {
@@ -63,7 +66,6 @@ span.created-at {
   border-radius: 5px;
 }
 
-/* Hover Event */
 article.tweet:hover {
   border-color: #6B6B6B;
 }
@@ -73,8 +75,7 @@ article.tweet:hover h2 {
 }
 
 article.tweet:hover h3 {
-  color: #777777;
-
+  color: #777;
 }
 
 article.tweet:hover .user-avatar {
