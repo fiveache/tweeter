@@ -56,10 +56,11 @@ const mongoDB = MongoClient.connect(MONGODB_URI, (err, db) => {
   // These are helpers for querying the database:
   const DataHelpers = require("./lib/data-helpers.js")(db);
   const UserHelpers = require("./lib/user-helpers.js")(db, ObjectID);
+  const LikeTweetsHelper = require("./lib/liketweet.js")(db, ObjectID);
 
   // Routes:
   const main = require("./routes/main")(UserHelpers);
-  const tweetsRoutes = require("./routes/tweets")(DataHelpers, UserHelpers);
+  const tweetsRoutes = require("./routes/tweets")(DataHelpers, UserHelpers, LikeTweetsHelper);
   app.use("/", main);
   app.use("/tweets", tweetsRoutes);
 
