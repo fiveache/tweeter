@@ -16,7 +16,8 @@
     "chance": "^1.0.2",
     "express": "^4.13.4",
     "md5": "^2.1.0",
-    "mongodb": "^2.2.36"
+    "mongodb": "^2.2.36",
+    "pug": "^2.0.3"
   },
   "devDependencies": {
     "node-sass": "^4.10.0",

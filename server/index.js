@@ -15,6 +15,8 @@ const MONGODB_URI = "mongodb://localhost:27017/tweeter";
 app.use(bodyParser.urlencoded({
   extended: true
 }));
+
+app.set('view engine', 'pug');
 app.use(express.static("public"));
 
 
@@ -23,7 +25,6 @@ const mongoDB = MongoClient.connect(MONGODB_URI, (err, db) => {
     console.error(`Failed to connect: ${MONGODB_URI}`);
     throw err;
   }
-
 
   // The `data-helpers` module provides an interface to the database of tweets.
   // This simple interface layer has a big benefit: we could switch out the
@@ -37,6 +38,11 @@ const mongoDB = MongoClient.connect(MONGODB_URI, (err, db) => {
   // The `tweets-routes` module works similarly: we pass it the `DataHelpers` object
   // so it can define routes that use it to interact with the data layer.
   const tweetsRoutes = require("./routes/tweets")(DataHelpers);
+
+
+ app.get('/', (req, res) => {
+   res.render('index', {pageName: 'Home'});
+ });
 
   // Mount the tweets routes at the "/tweets" path prefix:
   app.use("/tweets", tweetsRoutes);
