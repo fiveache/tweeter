@@ -147,6 +147,40 @@ section.user-login {
     margin-top: 1rem;
     float: right; }
 
+section.user-register {
+  background-color: #f3f3f3;
+  border: 1px #D1D1D1 solid;
+  border-radius: 5px;
+  margin: 2rem;
+  padding: 0 1rem 1rem;
+  width: 50%;
+  margin: auto;
+  margin-top: 2rem; }
+  section.user-register h2 {
+    border-bottom: 1px black solid; }
+  section.user-register textarea {
+    display: block;
+    width: 100%;
+    margin-bottom: 0.25rem;
+    padding: 0.5rem;
+    resize: none; }
+  section.user-register input#username {
+    float: right;
+    width: 80%;
+    height: 2rem; }
+  section.user-register input#password {
+    float: right;
+    width: 80%;
+    height: 2rem; }
+  section.user-register label {
+    float: left;
+    width: 20%;
+    height: 2rem;
+    padding-top: 0.5rem; }
+  section.user-register input.register-button {
+    margin-top: 1rem;
+    float: right; }
+
 article.tweet {
   position: relative;
   border: 1px #D1D1D1 solid;

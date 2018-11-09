@@ -24,12 +24,10 @@ module.exports = function userHelpers(db) {
             }
           });
       })
-
-
     },
 
     checkIfUserExists: function(username, callback) {
-      db.collections('users').find({
+      db.collection('users').find({
         'username': username
       }).toArray((err, docs) => {
         if (err) {
@@ -44,7 +42,7 @@ module.exports = function userHelpers(db) {
 
     createUser: function(username, password, callback) {
       const hashed = bcrypt.hashSync(password, 4);
-      db.collections('users').insertOne({
+      db.collection('users').insertOne({
         'username': username,
         'password': hashed
       });

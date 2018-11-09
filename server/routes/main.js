@@ -21,8 +21,8 @@ module.exports = function(userHelpers) {
     if (username && password) {
       userHelpers.checkIfUserExists(username, (err, userExists) => {
         if (userExists) {
-          res.status(409).render('login', {
-            pageName: 'Login',
+          res.status(409).render('index', {
+            pageName: 'Home',
             warning: 'User already exists. Login instead?'
           });
         } else {
@@ -36,14 +36,16 @@ module.exports = function(userHelpers) {
             }
 
             if (created) {
+
               // User Created, do some cookie shit here.
+
               res.status(200).render('register', {
                 pageName: 'Register',
                 warning: 'User created.'
               });
 
             } else {
-              // Just to be safe, catch this. 
+              // Just to be safe, catch this.
               res.status(500).render('register', {
                 pageName: 'Register',
                 warning: 'Whoops something went wrong on our end.'

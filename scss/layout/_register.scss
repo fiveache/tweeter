@@ -1,0 +1,47 @@
+section.user-register {
+  background-color: $color-lightergrey;
+  border: 1px $color-concretegrey solid;
+  border-radius: 5px;
+  margin: $size-above-small;
+  padding: 0 $size-below-small $size-below-small;
+  width: 50%;
+  margin: auto;
+  margin-top: $size-above-small;
+
+  h2 {
+    border-bottom: 1px black solid;
+  }
+
+  textarea {
+    display: block;
+    width: 100%;
+    margin-bottom: $size-tiniest;
+    padding: $size-tiny;
+    resize: none;
+  }
+
+  input#username {
+    float: right;
+    width: 80%;
+    height: $size-above-small;
+  }
+
+  input#password {
+    float: right;
+    width: 80%;
+    height: $size-above-small;
+  }
+
+  label {
+    float: left;
+    width: 20%;
+    height: $size-above-small;
+    padding-top: $size-tiny;
+  }
+
+  input.register-button {
+    margin-top: $size-below-small;
+    float: right;
+  }
+
+}

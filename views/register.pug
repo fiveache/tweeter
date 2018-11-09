@@ -1,4 +1,12 @@
 extend layout.pug
 
 block content
-  p some stuff about registering here.
+  section.user-register.clearfix
+    h2 Register
+    form(method='POST', action='/register')
+      .register-area
+        label(for='username') Username
+        input(id='username', name='username', type='text', placeholder='username')
+        label(for='password') Password
+        input(id='password', name='password', type='text', placeholder='password')
+      input(class="register-button" type='submit', value='Register')
