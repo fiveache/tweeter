@@ -55,7 +55,7 @@ const DataHelpers = require("./lib/data-helpers.js")(db);
 const UserHelpers = require("./lib/user-helpers.js")(db, ObjectID);
 
 const main = require("./routes/main")(UserHelpers);
-const tweetsRoutes = require("./routes/tweets")(DataHelpers, ObjectID);
+const tweetsRoutes = require("./routes/tweets")(DataHelpers, UserHelpers);
 
 app.use("/", main);
 app.use("/tweets", tweetsRoutes);
