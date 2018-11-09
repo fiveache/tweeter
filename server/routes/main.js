@@ -13,8 +13,8 @@ module.exports = function(userHelpers) {
     const username = req.body.username;
     const password = req.body.password;
     if (username && password) {
-      userHelpers.confirmUser(username, password, (err, userExists)=> {
-        if(err) {
+      userHelpers.confirmUser(username, password, (err, userExists) => {
+        if (err) {
           res.status(400).render('index', {
             pageName: 'Home',
             warning: err,
@@ -23,6 +23,7 @@ module.exports = function(userHelpers) {
 
         if (userExists) {
           // do cookie shit here
+          console.log('it worked!');
         } else {
           res.status(400).render('index', {
             pageName: 'Home',
