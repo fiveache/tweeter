@@ -17,9 +17,8 @@ $(document).ready(() => {
 
   // Creates a string of HTML that is the "tweet"
   const createTweetElement = (data) => {
-    console.log(data);
     const htmlString = `
-    <article class="tweet">
+    <article class="tweet" data-id="${data._id}">
       <header class="clearfix">
         <img class="user-avatar" src="${data.user.avatars.small}" alt="${escape(data.user.name)}' Avatar">
         <h2>${escape(data.user.name)}</h2>
@@ -30,7 +29,7 @@ $(document).ready(() => {
         <span class="created-at">
           ${Math.floor((Date.now() - new Date(data.created_at).getTime())/86400000)} Days Ago
         </span>
-        <div class="tweet-icons"><span class="flag">🏳</span><span class="retweet">🎺</span><span class="like-count">${data.likes || '0'} 👍 </span> </div>
+        <div class="tweet-icons"><span class="flag">🏳</span><span class="retweet">🎺</span><span class="like-count" data-ref="${data._id}">${data.likes || '0'} 👍 </span> </div>
       </footer>
     </article>
     `;
@@ -52,7 +51,6 @@ $(document).ready(() => {
   const prependTweet = (tweetHtml) => {
     $('#tweet-container').prepend(tweetHtml);
   };
-
 
   /*
    * =======================
@@ -100,7 +98,24 @@ $(document).ready(() => {
     $('section.user-register').slideToggle(150, () => {
       $('.user-login #username').focus();
     });
-    $('section.user-login').slideUp(150, () => {
+    $('section.user-login').slideUp(150, () => {});
+  });
+
+  $('#tweet-container').on('click', '.like-count', function(e) {
+    const _id = $(e.target).data('ref');
+    let value = Number($(e.target).text().match(/\d/g).join(''));
+    value++;
+    $.ajax({
+      type: 'POST',
+      url: `/tweets/like`,
+      data: {
+        id: _id
+      }
+    }).then((err) => {
+      if (err) {
+        console.log(err)
+      }
+      $(e.target).text(`${value} 👍`);
     });
   });
 
@@ -118,7 +133,7 @@ $(document).ready(() => {
       });
     });
 
-    $('.register-area #username').focus();
+  $('.register-area #username').focus();
 
 });
 // end $(document).ready()

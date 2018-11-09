@@ -66,8 +66,8 @@ module.exports = function(DataHelpers, UserHelpers, LikeTweetsHelper) {
     }
   });
 
-  tweetsRoutes.post("/like/:twid", (req, res) => {
-    LikeTweetsHelper.likeTweet(req.params.twid, (err, data) => {
+  tweetsRoutes.post("/like", (req, res) => {
+    LikeTweetsHelper.likeTweet(req.body.id, (err, data) => {
       if (err) {
         res.status(500).json({
           error: err.message

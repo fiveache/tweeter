@@ -64,7 +64,8 @@ body {
     border-radius: 5px; }
     #nav-bar .logout-button:hover {
       background-color: #fff;
-      color: #234651; }
+      color: #234651;
+      cursor: pointer; }
   #nav-bar .header {
     color: #fff;
     float: left;
@@ -89,7 +90,8 @@ body {
     border-radius: 5px; }
     #nav-bar .compose-button:hover {
       background-color: #fff;
-      color: #234651; }
+      color: #234651;
+      cursor: pointer; }
   #nav-bar .login-button {
     float: right;
     width: 6rem;
@@ -106,7 +108,8 @@ body {
     border-radius: 5px; }
     #nav-bar .login-button:hover {
       background-color: #fff;
-      color: #234651; }
+      color: #234651;
+      cursor: pointer; }
 
 section.new-tweet {
   display: none;
@@ -276,10 +279,14 @@ article.tweet {
         margin-top: 0.1rem;
         background-color: #eee;
         display: inline-block;
-        width: 2.5rem;
-        text-align: center; }
+        width: 3rem;
+        max-height: 3rem;
+        font-size: .75rem;
+        text-align: center;
+        overflow: hidden; }
         article.tweet:hover footer .tweet-icons span:hover {
-          background-color: #e8fdff; }
+          background-color: #e8fdff;
+          cursor: pointer; }
 
 span.created-at {
   display: inline-block;
