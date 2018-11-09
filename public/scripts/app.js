@@ -81,16 +81,17 @@ $(document).ready(() => {
   });
   // end $('.new-tweet form').on('submit');
 
+  // LOGIN AND COMPOSE BUTTONS:
   $('span.compose-button').click((e) => {
-      $('section.new-tweet').slideToggle(300, ()=> {
-        $('section.new-tweet textarea ').focus();
-      });
+    $('section.new-tweet').slideToggle(300, () => {
+      $('section.new-tweet textarea ').focus();
+    });
   });
 
   $('span.login-button').click((e) => {
-      $('section.user-login').slideToggle(300, ()=> {
-        $('#username').focus();
-      });
+    $('section.user-login').slideToggle(300, () => {
+      $('#username').focus();
+    });
   });
 
   /*

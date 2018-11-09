@@ -35,8 +35,9 @@ const mongoDB = MongoClient.connect(MONGODB_URI, (err, db) => {
   // Because it exports a function that expects the `db` as a parameter, we can
   // require it and pass the `db` parameter immediately:
   const DataHelpers = require("./lib/data-helpers.js")(db);
+  const UserHelpers = require("./lib/user-helpers.js")(db);
 
-  const main = require("./routes/main");
+  const main = require("./routes/main")(UserHelpers);
   const tweetsRoutes = require("./routes/tweets")(DataHelpers, ObjectID);
 
   app.use("/", main);
