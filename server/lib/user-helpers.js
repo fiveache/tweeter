@@ -93,7 +93,7 @@ module.exports = function userHelpers(db, ObjectID) {
         $push: {
           likes: tweetId
         }
-      }).then((err, docs) => {
+      }, (err, docs) => {
         if (err) {
           callback(err);
         }

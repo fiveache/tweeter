@@ -76,7 +76,7 @@ module.exports = function(DataHelpers, UserHelpers, LikeTweetsHelper) {
     } else {
       UserHelpers.getUserLikes(currentUser, (err, likes) => {
         if (likes.includes(tweetId)) {
-          // USER LIKED ALREADY!
+          // USER LIKED ALREADY! DO SHIT HERE
         } else {
           LikeTweetsHelper.likeTweet(tweetId, (err, data) => {
             if (err) {
