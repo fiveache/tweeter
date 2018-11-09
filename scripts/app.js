@@ -111,7 +111,7 @@ $(document).ready(() => {
       data: {
         id: _id
       }
-    }).then((err) => {
+    }).then((err, data) => {
       if (err) {
         console.log(err)
       }

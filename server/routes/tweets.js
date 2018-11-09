@@ -67,16 +67,39 @@ module.exports = function(DataHelpers, UserHelpers, LikeTweetsHelper) {
   });
 
   tweetsRoutes.post("/like", (req, res) => {
-    LikeTweetsHelper.likeTweet(req.body.id, (err, data) => {
-      if (err) {
-        res.status(500).json({
-          error: err.message
-        });
-      } else {
-        res.status(204).send();
-      }
-    });
+    const tweetId = req.body.id;
+    const currentUser = res.locals.currentUser;
+    if (!currentUser) {
+      res.status(401).json({
+        error: 'invalid request: must be logged in.'
+      });
+    } else {
+      UserHelpers.getUserLikes(currentUser, (err, likes) => {
+        if (likes.includes(tweetId)) {
+          // USER LIKED ALREADY!
+        } else {
+          LikeTweetsHelper.likeTweet(tweetId, (err, data) => {
+            if (err) {
+              res.status(500).json({
+                error: err.message
+              });
+            } else {
+              UserHelpers.updateUserLikes(res.locals.currentUser, tweetId, (err, update) => {
+                if (err) {
+                  res.status(500).json({
+                    error: err.message
+                  });
+                } else {
+                  res.status(201).send();
+                }
+              });
+            }
+          });
+        }
+      });
+    }
   });
+
 
   return tweetsRoutes;
 }

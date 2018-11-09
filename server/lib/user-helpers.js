@@ -69,6 +69,36 @@ module.exports = function userHelpers(db, ObjectID) {
         }
         callback(null, docs[0].username);
       });
+    },
+
+    getUserLikes: function(userID, callback) {
+      db.collection('users').find({
+        _id: ObjectID(userID)
+      }).toArray((err, docs) => {
+        if (err) {
+          callback(err);
+        }
+        if (docs[0].likes) {
+          callback(null, docs[0].likes);
+        } else {
+          callback(null, []);
+        }
+      });
+    },
+
+    updateUserLikes: function(userID, tweetId, callback) {
+      db.collection('users').updateOne({
+        _id: ObjectID(userID)
+      }, {
+        $push: {
+          likes: tweetId
+        }
+      }).then((err, docs) => {
+        if (err) {
+          callback(err);
+        }
+        callback(null, true);
+      });
     }
   }
 }
