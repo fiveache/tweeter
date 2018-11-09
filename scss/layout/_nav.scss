@@ -44,4 +44,26 @@
       color: $color-bluediane;
     }
   }
+
+  .login-button {
+    float: right;
+    width: $size-medium;
+    height: 80%;
+    margin-top: $size-tiny;
+    margin-bottom: $size-tiny;
+    border: 1px $color-bluediane solid;
+    text-align: center;
+    background-color: $color-vlightblue;
+    padding-top: $size-below-small;
+    padding-left: $size-small;
+    color: $color-turquoise;
+    font-size: $size-small;
+    font-weight: 300;
+    border-radius: 5px;
+
+    &:hover {
+      background-color: $color-white;
+      color: $color-bluediane;
+    }
+  }
 }

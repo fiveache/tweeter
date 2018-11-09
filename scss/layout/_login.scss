@@ -1,0 +1,45 @@
+section.user-login {
+  // display: none;
+  background-color: $color-light-grey;
+  border: 1px $color-concretegrey solid;
+  border-radius: 5px;
+  margin: $size-above-small;
+  padding: 0 $size-below-small $size-below-small;
+
+  h2 {
+    border-bottom: 1px black solid;
+  }
+
+  textarea {
+    display: block;
+    width: 100%;
+    margin-bottom: $size-tiniest;
+    padding: $size-tiny;
+    resize: none;
+  }
+
+  input#username {
+    float: right;
+    width: 80%;
+    height: $size-above-small;
+  }
+
+  input#password {
+    float: right;
+    width: 80%;
+    height: $size-above-small;
+  }
+
+  label {
+    float: left;
+    width: 20%;
+    height: $size-above-small;
+    padding-top: $size-tiny;
+  }
+
+  input.login-button {
+    margin-top: $size-below-small;
+    float: right;
+  }
+
+}
