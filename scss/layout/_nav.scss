@@ -31,6 +31,7 @@
     text-align: center;
     background-color: #e8fdff;
     padding-top: 1rem;
+    padding-bottom: 1.1rem;
     color: #00a087;
     font-size: $size-small;
     font-weight: 300;
@@ -74,7 +75,7 @@
 
   .login-button {
     float: right;
-    width: $size-medium;
+    width: 6rem;
     height: 80%;
     margin-top: $size-tiny;
     margin-bottom: $size-tiny;
@@ -82,7 +83,6 @@
     text-align: center;
     background-color: $color-vlightblue;
     padding-top: $size-below-small;
-    padding-left: $size-small;
     color: $color-turquoise;
     font-size: $size-small;
     font-weight: 300;
