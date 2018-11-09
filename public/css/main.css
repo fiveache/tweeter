@@ -109,6 +109,7 @@ section.new-tweet {
     margin-top: 0.4rem; }
 
 section.user-login {
+  display: none;
   background-color: #eee;
   border: 1px #D1D1D1 solid;
   border-radius: 5px;

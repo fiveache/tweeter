@@ -7,5 +7,9 @@ module.exports = (function() {
       pageName: 'Home'
     });
   });
+
+  main.post('/login', (req, res) => {
+    console.log(req.body);
+  });
   return main;
 })();

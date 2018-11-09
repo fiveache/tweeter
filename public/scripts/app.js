@@ -87,6 +87,12 @@ $(document).ready(() => {
       });
   });
 
+  $('span.login-button').click((e) => {
+      $('section.user-login').slideToggle(300, ()=> {
+        $('#username').focus();
+      });
+  });
+
   /*
    * =======================
    * Implementation
