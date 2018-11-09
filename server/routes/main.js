@@ -18,12 +18,6 @@ module.exports = function(userHelpers) {
     }
   });
 
-  main.get('/register', (req, res) => {
-    res.render('register', {
-      pageName: 'Register',
-    })
-  });
-
   main.post('/register', (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
@@ -38,8 +32,8 @@ module.exports = function(userHelpers) {
           // user does not exist, create user.
           userHelpers.createUser(username, password, (err, created) => {
             if (err) {
-              res.status(500).render('register', {
-                pageName: 'Register',
+              res.status(500).render('index', {
+                pageName: 'Home',
                 warning: err,
               });
             }
@@ -52,8 +46,8 @@ module.exports = function(userHelpers) {
 
             } else {
               // Just to be safe, catch this.
-              res.status(500).render('register', {
-                pageName: 'Register',
+              res.status(500).render('index', {
+                pageName: 'Home',
                 warning: 'Whoops something went wrong on our end.'
               });
             }
@@ -61,8 +55,8 @@ module.exports = function(userHelpers) {
         }
       });
     } else {
-      res.status(400).render('register', {
-        pageName: 'Register',
+      res.status(400).render('index', {
+        pageName: 'Home',
         warning: 'Username and Password fields cannot be blank.'
       });
     }

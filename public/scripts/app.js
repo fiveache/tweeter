@@ -92,8 +92,14 @@ $(document).ready(() => {
     $('section.user-login').slideToggle(150, () => {
       $('.user-login #username').focus();
     });
+    $('section.user-register').slideUp(150, () => {});
+  });
+
+  $('input.register-button').click((e) => {
     $('section.user-register').slideToggle(150, () => {
-      $('.register-area #username').focus();
+      $('.user-login #username').focus();
+    });
+    $('section.user-login').slideUp(150, () => {
     });
   });
 

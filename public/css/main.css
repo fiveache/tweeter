@@ -169,7 +169,7 @@ section.user-login {
   section.user-login input.login-button {
     margin-top: 1rem;
     float: right; }
-  section.user-login a.register-button {
+  section.user-login input.register-button {
     float: left;
     -webkit-appearance: button;
     font: inherit;
@@ -183,6 +183,7 @@ section.user-login {
     margin-top: 1rem; }
 
 section.user-register {
+  display: none;
   background-color: #f3f3f3;
   border: 1px #D1D1D1 solid;
   border-radius: 5px;

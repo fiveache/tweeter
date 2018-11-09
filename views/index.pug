@@ -12,6 +12,15 @@ block content
           span.warning-message What do you have to say?
           span.counter 140
     else
+      section.user-register.clearfix
+        h2 Register
+        form(method='POST', action='/register')
+          .register-area
+            label(for='username') Username
+            input(id='username', name='username', type='text', placeholder='username')
+            label(for='password') Password
+            input(id='password', name='password', type='text', placeholder='password')
+          input(class="register-button" type='submit', value='Register')
       section.user-login.clearfix
         h2 Login
         form(method='POST', action='/login')
@@ -21,5 +30,5 @@ block content
             label(for='password') Password
             input(id='password', name='password', type='text', placeholder='password')
           input(class="login-button" type='submit', value='Login')
-        a(class="register-button" href='/register' title='Register') Register
+        input(class="register-button" type='submit' value='Register')
     section#tweet-container
