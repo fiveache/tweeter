@@ -1,7 +1,9 @@
 html {
   box-sizing: border-box; }
 
-*, *:before, *:after {
+*,
+*:after,
+*:before {
   box-sizing: inherit; }
 
 body {
@@ -12,8 +14,7 @@ body {
 
 .container {
   background-color: #fff;
-  margin: auto;
-  margin-top: 5rem;
+  margin: 0 auto auto;
   min-height: 100vh;
   width: 28.125rem;
   overflow: auto; }
@@ -21,8 +22,14 @@ body {
 .clearfix {
   overflow: auto; }
 
+.warning-message {
+  border: 1px #6B6B6B solid;
+  background-color: #e8fdff;
+  text-align: center;
+  padding-top: 0.25rem; }
+
 #nav-bar {
-  position: fixed;
+  position: sticky;
   z-index: 2147483647;
   top: 0;
   height: 5rem;
