@@ -7,7 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server/index.js",
     "local": "./node_modules/.bin/nodemon --watch server -e js server/index.js",
-    "compile": "node-sass --include-path scss scss/main.scss public/css/main.css"
+    "transpile": "node-sass --include-path scss scss/main.scss public/css/main.css",
+    "uglify": "uglifyjs scripts/*  -m -c -o public/scripts/app.js",
+    "build": "npm run uglify && npm run transpile"
   },
   "author": "Lighthouse Labs",
   "license": "ISC",
@@ -26,6 +28,7 @@
   "devDependencies": {
     "node-sass": "^4.10.0",
     "nodemon": "^1.9.2",
-    "sass": "^1.14.3"
+    "sass": "^1.14.3",
+    "uglify-es": "github:mishoo/UglifyJS2#harmony"
   }
 }

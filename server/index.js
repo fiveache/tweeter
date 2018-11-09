@@ -47,14 +47,17 @@ const mongoDB = MongoClient.connect(MONGODB_URI, (err, db) => {
     }),
   }));
 
+  // If session exists, make available in all routes:
   app.use((req, res, next) => {
     res.locals.currentUser = req.session.userID;
     next();
   });
 
+  // These are helpers for querying the database:
   const DataHelpers = require("./lib/data-helpers.js")(db);
   const UserHelpers = require("./lib/user-helpers.js")(db, ObjectID);
 
+  // Routes:
   const main = require("./routes/main")(UserHelpers);
   const tweetsRoutes = require("./routes/tweets")(DataHelpers, UserHelpers);
   app.use("/", main);
@@ -62,6 +65,7 @@ const mongoDB = MongoClient.connect(MONGODB_URI, (err, db) => {
 
 });
 
+// Express server:
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
 });
