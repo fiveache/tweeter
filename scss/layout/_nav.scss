@@ -15,6 +15,33 @@
     width: $size-below-medium;
   }
 
+  .userGreeting {
+    float: left;
+    font-size: $size-above-small;
+    height: 100%;
+    line-height: $size-below-medium;
+    margin-left: $size-below-small;
+  }
+
+  .logout-button {
+    float: right;
+    width: 6rem;
+    height: 80%;
+    border: 1px #234651 solid;
+    text-align: center;
+    background-color: #e8fdff;
+    padding-top: 1rem;
+    color: #00a087;
+    font-size: $size-small;
+    font-weight: 300;
+    margin: $size-tiny;
+    border-radius: 5px;
+    &:hover {
+      background-color: $color-white;
+      color: $color-bluediane;
+    }
+  }
+
   .header {
     float: left;
     font-size: $size-above-small;

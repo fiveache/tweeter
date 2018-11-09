@@ -100,5 +100,21 @@ module.exports = function(userHelpers) {
     }
 
   });
+
+  main.post('/logout', (req, res) => {
+    if (res.locals.currentUser) {
+      req.session.destroy(function(err) {
+        if (err) {
+          res.status(400).render('index', {
+            pageName: 'Home',
+            warning: err,
+          });
+        } else {
+          return res.redirect('/');
+        }
+      })
+    }
+  });
+
   return main;
 }

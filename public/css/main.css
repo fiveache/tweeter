@@ -22,7 +22,7 @@ body {
 .clearfix {
   overflow: auto; }
 
-.warning-message {
+.error-message {
   border: 1px #6B6B6B solid;
   background-color: #e8fdff;
   text-align: center;
@@ -42,6 +42,28 @@ body {
     float: left;
     height: 5rem;
     width: 5rem; }
+  #nav-bar .userGreeting {
+    float: left;
+    font-size: 2rem;
+    height: 100%;
+    line-height: 5rem;
+    margin-left: 1rem; }
+  #nav-bar .logout-button {
+    float: right;
+    width: 6rem;
+    height: 80%;
+    border: 1px #234651 solid;
+    text-align: center;
+    background-color: #e8fdff;
+    padding-top: 1rem;
+    color: #00a087;
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin: 0.5rem;
+    border-radius: 5px; }
+    #nav-bar .logout-button:hover {
+      background-color: #fff;
+      color: #234651; }
   #nav-bar .header {
     float: left;
     font-size: 2rem;
