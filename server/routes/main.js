@@ -9,6 +9,57 @@ module.exports = function(userHelpers) {
     });
   });
 
+  main.get('/register', (req, res) => {
+    res.render('register', {
+      pageName: 'Register',
+    })
+  });
+
+  main.post('/register', (req, res) => {
+    const username = req.body.username;
+    const password = req.body.password;
+    if (username && password) {
+      userHelpers.checkIfUserExists(username, (err, userExists) => {
+        if (userExists) {
+          res.status(409).render('login', {
+            pageName: 'Login',
+            warning: 'User already exists. Login instead?'
+          });
+        } else {
+          // user does not exist, create user.
+          userHelpers.createUser(username, password, (err, created) => {
+            if (err) {
+              res.status(500).render('register', {
+                pageName: 'Register',
+                warning: err,
+              });
+            }
+
+            if (created) {
+              // User Created, do some cookie shit here.
+              res.status(200).render('register', {
+                pageName: 'Register',
+                warning: 'User created.'
+              });
+
+            } else {
+              // Just to be safe, catch this. 
+              res.status(500).render('register', {
+                pageName: 'Register',
+                warning: 'Whoops something went wrong on our end.'
+              });
+            }
+          });
+        }
+      });
+    } else {
+      res.status(400).render('register', {
+        pageName: 'Register',
+        warning: 'Username and Password fields cannot be blank.'
+      });
+    }
+  });
+
   main.post('/login', (req, res) => {
     const username = req.body.username;
     const password = req.body.password;

@@ -26,6 +26,29 @@ module.exports = function userHelpers(db) {
       })
 
 
+    },
+
+    checkIfUserExists: function(username, callback) {
+      db.collections('users').find({
+        'username': username
+      }).toArray((err, docs) => {
+        if (err) {
+          return callback(err);
+        }
+        if (docs.length === 0) {
+          return callback(null, false);
+        }
+        return callback(null, true);
+      });
+    },
+
+    createUser: function(username, password, callback) {
+      const hashed = bcrypt.hashSync(password, 4);
+      db.collections('users').insertOne({
+        'username': username,
+        'password': hashed
+      });
+      callback(null, true);
     }
 
   }
