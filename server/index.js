@@ -7,7 +7,8 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
 const {
-  MongoClient
+  MongoClient,
+  ObjectID
 } = require("mongodb");
 
 const MONGODB_URI = "mongodb://localhost:27017/tweeter";
@@ -37,14 +38,10 @@ const mongoDB = MongoClient.connect(MONGODB_URI, (err, db) => {
 
   // The `tweets-routes` module works similarly: we pass it the `DataHelpers` object
   // so it can define routes that use it to interact with the data layer.
-  const tweetsRoutes = require("./routes/tweets")(DataHelpers);
+  const main = require("./routes/main")('');
+  const tweetsRoutes = require("./routes/tweets")(DataHelpers, ObjectID);
 
-
- app.get('/', (req, res) => {
-   res.render('index', {pageName: 'Home'});
- });
-
-  // Mount the tweets routes at the "/tweets" path prefix:
+  app.use("/", main);
   app.use("/tweets", tweetsRoutes);
 });
 app.listen(PORT, () => {
