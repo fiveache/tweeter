@@ -3,11 +3,22 @@ extend layout.pug
 block content
 
   main.container
-    section.new-tweet
-      h2 Compose Tweet
-      form(method='POST', action='/tweets')
-        textarea(name='text', placeholder='What are you humming about?')
-        input(type='submit', value='Tweet')
-        span.warning-message What do you have to say?
-        span.counter 140
+    if user
+      section.new-tweet
+        h2 Compose Tweet
+        form(method='POST', action='/tweets')
+          textarea(name='text', placeholder='What are you humming about?')
+          input(type='submit', value='Tweet')
+          span.warning-message What do you have to say?
+          span.counter 140
+    else
+      section.user-login.clearfix
+        h2 Login
+        form(method='POST', action='/login')
+          .login-area
+            label(for='username') Username
+            input(id='username', name='username', type='text', placeholder='username')
+            label(for='password') Password
+            input(id='password', name='password', type='text', placeholder='password')
+          input(class="login-button" type='submit', value='Login')
     section#tweet-container

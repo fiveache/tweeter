@@ -59,6 +59,24 @@ body {
     #nav-bar .compose-button:hover {
       background-color: #fff;
       color: #234651; }
+  #nav-bar .login-button {
+    float: right;
+    width: 9rem;
+    height: 80%;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    border: 1px #234651 solid;
+    text-align: center;
+    background-color: #e8fdff;
+    padding-top: 1rem;
+    padding-left: 1.5rem;
+    color: #00a087;
+    font-size: 1.5rem;
+    font-weight: 300;
+    border-radius: 5px; }
+    #nav-bar .login-button:hover {
+      background-color: #fff;
+      color: #234651; }
 
 section.new-tweet {
   display: none;
@@ -89,6 +107,37 @@ section.new-tweet {
     font-style: italic;
     margin-left: 0.25rem;
     margin-top: 0.4rem; }
+
+section.user-login {
+  background-color: #eee;
+  border: 1px #D1D1D1 solid;
+  border-radius: 5px;
+  margin: 2rem;
+  padding: 0 1rem 1rem; }
+  section.user-login h2 {
+    border-bottom: 1px black solid; }
+  section.user-login textarea {
+    display: block;
+    width: 100%;
+    margin-bottom: 0.25rem;
+    padding: 0.5rem;
+    resize: none; }
+  section.user-login input#username {
+    float: right;
+    width: 80%;
+    height: 2rem; }
+  section.user-login input#password {
+    float: right;
+    width: 80%;
+    height: 2rem; }
+  section.user-login label {
+    float: left;
+    width: 20%;
+    height: 2rem;
+    padding-top: 0.5rem; }
+  section.user-login input.login-button {
+    margin-top: 1rem;
+    float: right; }
 
 article.tweet {
   position: relative;

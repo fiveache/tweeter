@@ -1,4 +1,7 @@
 nav#nav-bar
   img.logo(src='/images/bird.png')
   span.header Tweeter
-  span.compose-button Compose
+  if user
+    span.compose-button Compose
+  else
+    span.login-button Login
