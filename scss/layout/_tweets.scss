@@ -73,6 +73,21 @@ article.tweet {
 
     footer .tweet-icons {
       visibility: visible;
+
+      span {
+        border: 1px $color-concretegrey solid;
+        border-radius: 5px;
+        padding: 0.1rem 0.1rem 0.1rem 0.2rem;
+        margin-right: 0.1rem;
+        margin-top: 0.1rem;
+        background-color: $color-light-grey;
+        display: inline-block;
+        width: 2.5rem;
+        text-align: center;
+        &:hover {
+          background-color: $color-vlightblue;
+        }
+      }
     }
   }
 }

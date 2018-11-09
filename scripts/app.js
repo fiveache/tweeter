@@ -17,6 +17,7 @@ $(document).ready(() => {
 
   // Creates a string of HTML that is the "tweet"
   const createTweetElement = (data) => {
+    console.log(data);
     const htmlString = `
     <article class="tweet">
       <header class="clearfix">
@@ -29,7 +30,7 @@ $(document).ready(() => {
         <span class="created-at">
           ${Math.floor((Date.now() - new Date(data.created_at).getTime())/86400000)} Days Ago
         </span>
-        <div class="tweet-icons">👍 🎺 💛</div>
+        <div class="tweet-icons"><span class="flag">🏳</span><span class="retweet">🎺</span><span class="like-count">${data.likes || '0'} 👍 </span> </div>
       </footer>
     </article>
     `;

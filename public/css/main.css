@@ -268,6 +268,18 @@ article.tweet {
       opacity: 1; }
     article.tweet:hover footer .tweet-icons {
       visibility: visible; }
+      article.tweet:hover footer .tweet-icons span {
+        border: 1px #D1D1D1 solid;
+        border-radius: 5px;
+        padding: 0.1rem 0.1rem 0.1rem 0.2rem;
+        margin-right: 0.1rem;
+        margin-top: 0.1rem;
+        background-color: #eee;
+        display: inline-block;
+        width: 2.5rem;
+        text-align: center; }
+        article.tweet:hover footer .tweet-icons span:hover {
+          background-color: #e8fdff; }
 
 span.created-at {
   display: inline-block;
