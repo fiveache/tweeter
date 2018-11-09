@@ -4,9 +4,18 @@ const bcrypt = require('bcrypt');
 
 module.exports = function(userHelpers) {
   main.get('/', (req, res) => {
-    res.render('index', {
-      pageName: 'Home'
-    });
+    if (res.locals.currentUser) {
+      const username = userHelpers.getUserName(res.locals.currentUser, (err, username) => {
+        res.render('index', {
+          pageName: 'Home',
+          user: username,
+        });
+      });
+    } else {
+      res.render('index', {
+        pageName: 'Home'
+      });
+    }
   });
 
   main.get('/register', (req, res) => {
@@ -36,12 +45,9 @@ module.exports = function(userHelpers) {
             }
 
             if (created) {
-
-              // User Created, do some cookie shit here.
-
-              res.status(200).render('register', {
-                pageName: 'Register',
-                warning: 'User created.'
+              userHelpers.getUserId(username, (err, _id) => {
+                req.session.userID = _id;
+                res.status(200).redirect('/');
               });
 
             } else {
@@ -73,19 +79,18 @@ module.exports = function(userHelpers) {
             warning: err,
           });
         }
-
         if (userExists) {
-          // do cookie shit here
-          console.log('it worked!');
+          userHelpers.getUserId(username, (err, _id) => {
+            req.session.userID = _id;
+            res.status(200).redirect('/');
+          });
         } else {
           res.status(400).render('index', {
             pageName: 'Home',
             warning: 'Incorrect password.',
           })
         }
-
       });
-
     } else {
       // username and password body is empty:
       res.status(400).render('index', {

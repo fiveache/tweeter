@@ -1,7 +1,7 @@
 "use strict";
 const bcrypt = require('bcrypt');
 
-module.exports = function userHelpers(db) {
+module.exports = function userHelpers(db, ObjectID) {
   return {
     confirmUser: function(username, password, callback) {
       db.collection('users').find({
@@ -47,7 +47,28 @@ module.exports = function userHelpers(db) {
         'password': hashed
       });
       callback(null, true);
-    }
+    },
 
+    getUserId: function(username, callback) {
+      db.collection('users').find({
+        'username': username
+      }).toArray((err, docs) => {
+        if (err) {
+          callback(err);
+        }
+        callback(null, docs[0]._id);
+      });
+    },
+
+    getUserName: function(userID, callback) {
+      db.collection('users').find({
+        _id: ObjectID(userID)
+      }).toArray((err, docs) => {
+        if (err) {
+          callback(err);
+        }
+        callback(null, docs[0].username);
+      });
+    }
   }
 }
