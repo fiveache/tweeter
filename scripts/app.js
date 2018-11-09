@@ -1,5 +1,8 @@
 $(document).ready(() => {
 
+  // Check if user is logged in by making an AJAX request and getting if there is a valid user!
+
+
   /*
    * =======================
    * HELPER FUNCTIONS
@@ -16,8 +19,8 @@ $(document).ready(() => {
   };
 
   // Creates a string of HTML that is the "tweet"
-  const createTweetElement = (data) => {
-    const htmlString = `
+  const createTweetElement = (data, isLoggedIn) => {
+    let htmlString = `
     <article class="tweet" data-id="${data._id}">
       <header class="clearfix">
         <img class="user-avatar" src="${data.user.avatars.small}" alt="${escape(data.user.name)}' Avatar">
@@ -28,11 +31,13 @@ $(document).ready(() => {
       <footer>
         <span class="created-at">
           ${Math.floor((Date.now() - new Date(data.created_at).getTime())/86400000)} Days Ago
-        </span>
-        <div class="tweet-icons"><span class="flag">🏳</span><span class="retweet">🎺</span><span class="like-count" data-ref="${data._id}">${data.likes || '0'} 👍 </span> </div>
-      </footer>
-    </article>
-    `;
+        </span>`
+
+    if (isLoggedIn) {
+      htmlString = `${htmlString} <div class="tweet-icons"><span class="flag">🏳</span><span class="retweet">🎺</span><span class="like-count" data-ref="${data._id}">${data.likes || '0'} 👍 </span> </div>`;
+    }
+    htmlString = `${htmlString}</footer></article>`;
+
     return htmlString;
   };
 
@@ -73,7 +78,8 @@ $(document).ready(() => {
         $('.new-tweet form textarea').val('').trigger('input');
         loadTweets()
           .then((data) => {
-            const $tweet = createTweetElement(data[Object.keys(data).length - 1]);
+            console.log(data);
+            const $tweet = createTweetElement(data.tweets[Object.keys(data.tweets).length - 1], data.isLoggedIn);
             prependTweet($tweet);
           })
       });
@@ -101,6 +107,7 @@ $(document).ready(() => {
     $('section.user-login').slideUp(150, () => {});
   });
 
+  // Like button
   $('#tweet-container').on('click', '.like-count', function(e) {
     const _id = $(e.target).data('ref');
     let value = Number($(e.target).text().match(/\d/g).join(''));
@@ -128,8 +135,8 @@ $(document).ready(() => {
   // On load, gather tweets and display them.
   loadTweets()
     .then((data) => {
-      Object.keys(data).forEach((tweet) => {
-        prependTweet(createTweetElement(data[tweet]));
+      Object.keys(data.tweets).forEach((tweet) => {
+        prependTweet(createTweetElement(data.tweets[tweet], data.isLoggedIn));
       });
     });
 

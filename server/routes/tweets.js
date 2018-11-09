@@ -9,12 +9,13 @@ module.exports = function(DataHelpers, UserHelpers, LikeTweetsHelper) {
 
   tweetsRoutes.get("/", function(req, res) {
     DataHelpers.getTweets((err, tweets) => {
+      const isLoggedIn = res.locals.currentUser !== undefined;
       if (err) {
         res.status(500).json({
           error: err.message
         });
       } else {
-        res.json(tweets);
+        res.json({tweets, isLoggedIn});
       }
     });
   });
