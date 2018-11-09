@@ -98,7 +98,6 @@ module.exports = function(userHelpers) {
         warning: 'Login fields cannot be blank.'
       });
     }
-
   });
 
   main.post('/logout', (req, res) => {
@@ -113,6 +112,8 @@ module.exports = function(userHelpers) {
           return res.redirect('/');
         }
       })
+    } else {
+      res.redirect('/');
     }
   });
 

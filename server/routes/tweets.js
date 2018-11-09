@@ -20,43 +20,49 @@ module.exports = function(DataHelpers, UserHelpers) {
   });
 
   tweetsRoutes.post("/", function(req, res) {
-    if (!req.body.text) {
-      res.status(400).json({
-        error: 'invalid request: no data in POST body'
+    if (!res.locals.currentUser) {
+      res.status(401).json({
+        error: 'invalid request: must be logged in.'
       });
-      console.log(req.body);
       return;
-    }
-
-    const user = req.body.user ? req.body.user : userHelper.generateRandomUser();
-    UserHelpers.getUserName(res.locals.currentUser, (err, username) => {
-      if (err) {
-        console.log(err);
+    } else {
+      if (!req.body.text) {
+        res.status(400).json({
+          error: 'invalid request: no data in POST body'
+        });
+        return;
       }
 
-      // Edit this later:
-      user.name = username;
-      user.handle = `@${username}`;
-
-      const tweet = {
-        user: user,
-        content: {
-          text: req.body.text
-        },
-        created_at: Date.now()
-      };
-
-      DataHelpers.saveTweet(tweet, (err) => {
+      const user = req.body.user ? req.body.user : userHelper.generateRandomUser();
+      UserHelpers.getUserName(res.locals.currentUser, (err, username) => {
         if (err) {
-          res.status(500).json({
-            error: err.message
-          });
-        } else {
-          res.status(201).send();
+          console.log(err);
         }
-      });
-    });
 
+        // Edit this later:
+        user.name = username;
+        user.handle = `@${username}`;
+
+        const tweet = {
+          user: user,
+          content: {
+            text: req.body.text
+          },
+          created_at: Date.now()
+        };
+
+        DataHelpers.saveTweet(tweet, (err) => {
+          if (err) {
+            res.status(500).json({
+              error: err.message
+            });
+          } else {
+            res.status(201).send();
+          }
+        });
+      });
+
+    }
   });
 
   return tweetsRoutes;
