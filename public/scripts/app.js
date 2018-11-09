@@ -89,8 +89,11 @@ $(document).ready(() => {
   });
 
   $('span.login-button').click((e) => {
-    $('section.user-login').slideToggle(300, () => {
-      $('#username').focus();
+    $('section.user-login').slideToggle(150, () => {
+      $('.user-login #username').focus();
+    });
+    $('section.user-register').slideToggle(150, () => {
+      $('.register-area #username').focus();
     });
   });
 
@@ -107,6 +110,8 @@ $(document).ready(() => {
         prependTweet(createTweetElement(data[tweet]));
       });
     });
+
+    $('.register-area #username').focus();
 
 });
 // end $(document).ready()

@@ -1,9 +1,11 @@
 nav#nav-bar
-  img.logo(src='/images/bird.png')
-  span.header Tweeter
+  a(href="/")
+    img.logo(src='/images/bird.png')
+    span.header Tweeter
   if user
     span.userGreeting Hello, #{user}!
     span.compose-button Compose
-    span.logout-button Logout
+    form(action="/logout" method="POST")
+      button.logout-button(type="submit" value="Logout") Logout
   else
     span.login-button Login
