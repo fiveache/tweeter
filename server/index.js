@@ -4,7 +4,7 @@ require('dotenv').config();
 
 // Basic express setup:
 
-const PORT = 8080;
+const PORT = process.env.PORT || 8080;
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
@@ -26,11 +26,11 @@ app.use(express.static("public"));
 
 // === MONGO CONNECTION ===
 
-const MONGODB_URI = "mongodb://localhost:27017/tweeter";
-
+const MONGODB_URI = `mongodb://${process.env.DB_USER}:${process.env.DB_PASS}${process.env.DB_HOST}`;
+console.log(MONGODB_URI);
 const mongoDB = MongoClient.connect(MONGODB_URI, (err, db) => {
   if (err) {
-    console.error(`Failed to connect: ${MONGODB_URI}`);
+    console.error(`Failed to connect.`);
     throw err;
   }
 
