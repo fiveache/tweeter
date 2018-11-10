@@ -65,7 +65,7 @@ SESSION_SECRET='1A2B3C4D5E6F7'
 in `server/index.js`, configure the value of the variable `MONGODB_URI` to `mongodb://localhost:27017/tweeter`:
 
 ```
-const MONGODB_URI=mongodb://localhost:27017/tweeter;
+const MONGODB_URI="mongodb://localhost:27017/tweeter";
 ```
 Boot up your server by running:
 ```
