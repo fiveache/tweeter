@@ -19,7 +19,7 @@ $(document).ready(() => {
   };
 
   // Creates a string of HTML that is the "tweet"
-  const createTweetElement = (data, isLoggedIn) => {
+  const createTweetElement = (data, isLoggedIn, likes) => {
     let htmlString = `
     <article class="tweet" data-id="${data._id}">
       <header class="clearfix">
@@ -34,7 +34,11 @@ $(document).ready(() => {
         </span>`
 
     if (isLoggedIn) {
-      htmlString = `${htmlString} <div class="tweet-icons"><span class="flag">🏳</span><span class="retweet">🎺</span><span class="like-count" data-ref="${data._id}">${data.likes || '0'} 👍 </span> </div>`;
+      htmlString = `${htmlString} <div class="tweet-icons"><span class="flag">🏳</span><span class="retweet">🎺</span><span class="like-count`;
+      if(likes.includes(data._id)){
+        htmlString = `${htmlString} user-liked-tweet`;
+      }
+      htmlString = `${htmlString}" data-ref="${data._id}">${data.likes || '0'} 👍 </span> </div>`;
     }
     htmlString = `${htmlString}</footer></article>`;
 
@@ -78,8 +82,7 @@ $(document).ready(() => {
         $('.new-tweet form textarea').val('').trigger('input');
         loadTweets()
           .then((data) => {
-            console.log(data);
-            const $tweet = createTweetElement(data.tweets[Object.keys(data.tweets).length - 1], data.isLoggedIn);
+            const $tweet = createTweetElement(data.tweets[Object.keys(data.tweets).length - 1], data.isLoggedIn, data.likes);
             prependTweet($tweet);
           })
       });
@@ -126,11 +129,14 @@ $(document).ready(() => {
       if (jqXHR.status === 201) {
         value++;
         $(e.target).text(`${value} 👍`);
+        $(e.target).addClass('user-liked-tweet');
+
       }
 
       if (jqXHR.status === 204) {
         value--;
         $(e.target).text(`${value} 👍`);
+        $(e.target).removeClass('user-liked-tweet');
       }
 
     });
@@ -146,7 +152,7 @@ $(document).ready(() => {
   loadTweets()
     .then((data) => {
       Object.keys(data.tweets).forEach((tweet) => {
-        prependTweet(createTweetElement(data.tweets[tweet], data.isLoggedIn));
+        prependTweet(createTweetElement(data.tweets[tweet], data.isLoggedIn, data.likes));
       });
     });
 

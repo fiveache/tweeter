@@ -84,12 +84,24 @@ article.tweet {
         display: inline-block;
         width: 3rem;
         max-height: 3rem;
-        font-size: .75rem;
+        font-size: 0.75rem;
         text-align: center;
         overflow: hidden;
+
         &:hover {
           background-color: $color-vlightblue;
           cursor: pointer;
+        }
+      }
+
+      .user-liked-tweet {
+        background-color: $color-turquoise;
+        border-color: $color-blueish;
+        color: $color-white;
+        &:hover{
+          background-color: $color-blueish;
+          border-color: $color-blueish;
+          color: $color-white;
         }
       }
     }

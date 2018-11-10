@@ -43,9 +43,7 @@ module.exports = function(userHelpers) {
                 req.session.userID = _id;
                 res.status(200).redirect('/');
               });
-
             } else {
-              // Just to be safe, catch this.
               res.status(500).render('index', {
                 pageName: 'Home',
                 warning: 'Whoops something went wrong on our end.'

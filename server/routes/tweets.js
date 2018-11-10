@@ -15,12 +15,28 @@ module.exports = function(DataHelpers, UserHelpers, LikeTweetsHelper) {
           error: err.message
         });
       } else {
-        res.json({
-          tweets,
-          isLoggedIn
-        });
+        if (!isLoggedIn) {
+
+          res.json({
+            tweets,
+            isLoggedIn
+          });
+        } else {
+          UserHelpers.getUserLikes(res.locals.currentUser, (err, likes) => {
+            if (err) {
+              res.status(500).json({
+                error: err.message
+              });
+            };
+            res.json({
+              tweets,
+              isLoggedIn,
+              likes
+            });
+          });
+        };
       }
-    });
+    })
   });
 
   tweetsRoutes.post("/", function(req, res) {
@@ -80,8 +96,6 @@ module.exports = function(DataHelpers, UserHelpers, LikeTweetsHelper) {
     } else {
       UserHelpers.getUserLikes(currentUser, (err, likes) => {
         if (likes.includes(tweetId)) {
-          // USER LIKED ALREADY!
-
           UserHelpers.removeUserLikes(currentUser, tweetId, (err, removed) => {
             if (err) {
               res.status(500).json({

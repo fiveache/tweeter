@@ -281,12 +281,20 @@ article.tweet {
         display: inline-block;
         width: 3rem;
         max-height: 3rem;
-        font-size: .75rem;
+        font-size: 0.75rem;
         text-align: center;
         overflow: hidden; }
         article.tweet:hover footer .tweet-icons span:hover {
           background-color: #e8fdff;
           cursor: pointer; }
+      article.tweet:hover footer .tweet-icons .user-liked-tweet {
+        background-color: #00a087;
+        border-color: #24859f;
+        color: #fff; }
+        article.tweet:hover footer .tweet-icons .user-liked-tweet:hover {
+          background-color: #24859f;
+          border-color: #24859f;
+          color: #fff; }
 
 span.created-at {
   display: inline-block;
