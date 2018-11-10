@@ -26,7 +26,7 @@ Install all Dependencies (using `npm install` command).
 ```
 npm install
 ```
-Create a .env file in the root of the TinyApp project by running touch .env.
+Create a .env file in the root of the project by running touch .env.
 ```
 touch .env
 ```
