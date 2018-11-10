@@ -8,6 +8,30 @@ Tweeter began as a simple, single-page (SPA) Twitter clone to practice HTML, CSS
 This app is deployed on [Heroku](https://david-tweeter.herokuapp.com/).
 
 ## Features
+- Primarily a client-side Single Page App (SPA)
+- The client-side app communicates with a server via AJAX
+- Tweets are persisted to MongoDB and survive server restart
+- Navigation Bar Elements (Login/Logout, Compose)
+  - if the Compose Tweet box is currently hidden, then it is shown, and the textarea inside it is auto-focused
+  - Transitions between show/hidden states animated
+- Character Counter (and corresponding UI Elements)
+  - When a user types into the Compose Tweet textarea, the Character Counter is updated to show how many characters a user may still type.
+  - UI Elements communicate errors, such as too many characters in tweet.
+  - The Character Counter turns red (or similar) when more than 140 characters have been typed into the Compose Tweet textarea, and it shows how many characters over the 140 limit have been typed (using a negative number)
+- Compose Tweet
+  - A user is unable to tweet an invalid tweet (the tweet textarea is empty or contains more than 140 characters) because UI elements are locked.
+  - When a user submits a valid tweet, the list of tweets is refreshed (displaying the new tweet), the Compose Tweet textarea is cleared, and the Character Counter is reset (to 140)
+- Styled using SCSS. UI elements are broken into partials (in pug) and are served to the client by Express.
+- HTML Data Attributes are used to identify unique tweets (and are used in handling likes)
+- Responsive Design
+  - Media queries and relative units handle scaling for a better user experience
+- User Logins
+  - Users are logged in and sessions are stored in MongoDB.
+- Minified JS
+  - Front end JavaScript is minified for better performance.
+- Modularized Data Querying and route handling
+  - Helper functions are encapsulated
+  - Routes are handled as Express middleware
 
 ## Getting Started
 
