@@ -255,6 +255,8 @@ article.tweet {
       visibility: hidden;
       float: right;
       margin: 0.25rem 1rem; }
+    article.tweet footer .tweet-warning-area {
+      font-size: 0.5rem; }
   article.tweet .user-avatar {
     float: left;
     opacity: 0.75;

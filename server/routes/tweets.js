@@ -95,7 +95,7 @@ module.exports = function(DataHelpers, UserHelpers, LikeTweetsHelper) {
     } else {
       LikeTweetsHelper.isAuthorsTweet(tweetId, currentUser, (err, isAuthors) => {
         if (isAuthors) {
-          res.status(401).json({
+          res.status(403).json({
             error: 'Cannot like own tweet'
           });
         } else {
@@ -137,7 +137,6 @@ module.exports = function(DataHelpers, UserHelpers, LikeTweetsHelper) {
             }
           });
         }
-        // END ELSE
       });
     }
   });

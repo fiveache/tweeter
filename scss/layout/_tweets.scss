@@ -46,6 +46,10 @@ article.tweet {
       float: right;
       margin: $size-tiniest $size-below-small;
     }
+
+    .tweet-warning-area {
+      font-size: 0.5rem;
+    }
   }
 
   .user-avatar {
@@ -98,7 +102,8 @@ article.tweet {
         background-color: $color-turquoise;
         border-color: $color-blueish;
         color: $color-white;
-        &:hover{
+
+        &:hover {
           background-color: $color-blueish;
           border-color: $color-blueish;
           color: $color-white;

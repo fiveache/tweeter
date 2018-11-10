@@ -35,7 +35,7 @@ $(document).ready(() => {
 
     if (isLoggedIn) {
       htmlString = `${htmlString} <div class="tweet-icons"><span class="flag">🏳</span><span class="retweet">🎺</span><span class="like-count`;
-      if(likes.includes(data._id)){
+      if (likes.includes(data._id)) {
         htmlString = `${htmlString} user-liked-tweet`;
       }
       htmlString = `${htmlString}" data-ref="${data._id}">${data.likes || '0'} 👍 </span> </div>`;
@@ -121,16 +121,24 @@ $(document).ready(() => {
       data: {
         id: _id
       }
+    }).fail((jqXHR, text, err) => {
+      if (jqXHR.status === 403) {
+        $(e.target).parent().parent().append(`<span class='tweet-warning-area'></span>`);
+        $('.tweet-warning-area').html(`🚫 Can't like your own tweet!`);
+        $(e.target).removeClass('like-count');
+        $(e.target).removeData('ref');
+
+      } else {
+        console.log(err)
+      }
     }).then((err, data, jqXHR) => {
       if (err) {
         console.log(err)
       }
-
       if (jqXHR.status === 201) {
         value++;
         $(e.target).text(`${value} 👍`);
         $(e.target).addClass('user-liked-tweet');
-
       }
 
       if (jqXHR.status === 204) {
