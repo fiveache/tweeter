@@ -21,6 +21,9 @@ body {
   min-height: 100vh;
   width: $size-biggest;
   overflow: auto;
+  @media screen and (max-width: 470px) {
+    width: 100vw;
+  }
 }
 
 .clearfix {

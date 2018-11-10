@@ -23,12 +23,18 @@ section.user-register {
     float: right;
     width: 80%;
     height: $size-above-small;
+    @media screen and (max-width: 450px) {
+      width: 100%;
+    }
   }
 
   input#password {
     float: right;
     width: 80%;
     height: $size-above-small;
+    @media screen and (max-width: 450px) {
+      width: 100%;
+    }
   }
 
   label {
@@ -36,6 +42,9 @@ section.user-register {
     width: 20%;
     height: $size-above-small;
     padding-top: $size-tiny;
+    @media screen and (max-width: 450px) {
+      display: none;
+    }
   }
 
   input.register-button {

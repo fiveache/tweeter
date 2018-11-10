@@ -22,12 +22,18 @@ section.user-login {
     float: right;
     width: 80%;
     height: $size-above-small;
+    @media screen and (max-width: 450px) {
+      width: 100%;
+    }
   }
 
   input#password {
     float: right;
     width: 80%;
     height: $size-above-small;
+    @media screen and (max-width: 450px) {
+      width: 100%;
+    }
   }
 
   label {
@@ -35,6 +41,9 @@ section.user-login {
     width: 20%;
     height: $size-above-small;
     padding-top: $size-tiny;
+    @media screen and (max-width: 450px) {
+      display: none;
+    }
   }
 
   input.login-button {

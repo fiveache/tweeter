@@ -21,6 +21,12 @@
     height: 100%;
     line-height: $size-below-medium;
     margin-left: $size-below-small;
+    @media screen and (max-width: 790px) {
+      font-size: 1rem;
+    }
+    @media screen and (max-width: 500px) {
+      display: none;
+    }
   }
 
   .logout-button {
@@ -37,10 +43,16 @@
     font-weight: 300;
     margin: $size-tiny;
     border-radius: 5px;
+
     &:hover {
       background-color: $color-white;
       color: $color-bluediane;
       cursor: pointer;
+    }
+    @media screen and (max-width: 790px) {
+      font-size: inherit;
+      width: 6rem;
+      height: 4rem;
     }
   }
 
@@ -51,6 +63,12 @@
     height: 100%;
     line-height: $size-below-medium;
     margin-left: 10px;
+    @media screen and (max-width: 790px) {
+      font-size: 1.5rem;
+    }
+    @media screen and (max-width: 550px) {
+      display: none;
+    }
   }
 
   .compose-button {
@@ -73,6 +91,11 @@
       color: $color-bluediane;
       cursor: pointer;
     }
+    @media screen and (max-width: 790px) {
+      font-size: inherit;
+      width: 6em;
+      height: 4rem;
+    }
   }
 
   .login-button {
@@ -94,6 +117,11 @@
       background-color: $color-white;
       color: $color-bluediane;
       cursor: pointer;
+    }
+    @media screen and (max-width: 790px) {
+      font-size: inherit;
+      width: 6em;
+      height: 4rem;
     }
   }
 }

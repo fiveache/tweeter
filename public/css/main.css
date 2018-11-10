@@ -18,6 +18,9 @@ body {
   min-height: 100vh;
   width: 28.125rem;
   overflow: auto; }
+  @media screen and (max-width: 470px) {
+    .container {
+      width: 100vw; } }
 
 .clearfix {
   overflow: auto; }
@@ -48,6 +51,12 @@ body {
     height: 100%;
     line-height: 5rem;
     margin-left: 1rem; }
+    @media screen and (max-width: 790px) {
+      #nav-bar .userGreeting {
+        font-size: 1rem; } }
+    @media screen and (max-width: 500px) {
+      #nav-bar .userGreeting {
+        display: none; } }
   #nav-bar .logout-button {
     float: right;
     width: 6rem;
@@ -66,6 +75,11 @@ body {
       background-color: #fff;
       color: #234651;
       cursor: pointer; }
+    @media screen and (max-width: 790px) {
+      #nav-bar .logout-button {
+        font-size: inherit;
+        width: 6rem;
+        height: 4rem; } }
   #nav-bar .header {
     color: #fff;
     float: left;
@@ -73,6 +87,12 @@ body {
     height: 100%;
     line-height: 5rem;
     margin-left: 10px; }
+    @media screen and (max-width: 790px) {
+      #nav-bar .header {
+        font-size: 1.5rem; } }
+    @media screen and (max-width: 550px) {
+      #nav-bar .header {
+        display: none; } }
   #nav-bar .compose-button {
     float: right;
     width: 9rem;
@@ -91,6 +111,11 @@ body {
       background-color: #fff;
       color: #234651;
       cursor: pointer; }
+    @media screen and (max-width: 790px) {
+      #nav-bar .compose-button {
+        font-size: inherit;
+        width: 6em;
+        height: 4rem; } }
   #nav-bar .login-button {
     float: right;
     width: 6rem;
@@ -109,6 +134,11 @@ body {
       background-color: #fff;
       color: #234651;
       cursor: pointer; }
+    @media screen and (max-width: 790px) {
+      #nav-bar .login-button {
+        font-size: inherit;
+        width: 6em;
+        height: 4rem; } }
 
 section.new-tweet {
   display: none;
@@ -159,15 +189,24 @@ section.user-login {
     float: right;
     width: 80%;
     height: 2rem; }
+    @media screen and (max-width: 450px) {
+      section.user-login input#username {
+        width: 100%; } }
   section.user-login input#password {
     float: right;
     width: 80%;
     height: 2rem; }
+    @media screen and (max-width: 450px) {
+      section.user-login input#password {
+        width: 100%; } }
   section.user-login label {
     float: left;
     width: 20%;
     height: 2rem;
     padding-top: 0.5rem; }
+    @media screen and (max-width: 450px) {
+      section.user-login label {
+        display: none; } }
   section.user-login input.login-button {
     margin-top: 1rem;
     float: right; }
@@ -204,15 +243,24 @@ section.user-register {
     float: right;
     width: 80%;
     height: 2rem; }
+    @media screen and (max-width: 450px) {
+      section.user-register input#username {
+        width: 100%; } }
   section.user-register input#password {
     float: right;
     width: 80%;
     height: 2rem; }
+    @media screen and (max-width: 450px) {
+      section.user-register input#password {
+        width: 100%; } }
   section.user-register label {
     float: left;
     width: 20%;
     height: 2rem;
     padding-top: 0.5rem; }
+    @media screen and (max-width: 450px) {
+      section.user-register label {
+        display: none; } }
   section.user-register input.register-button {
     margin-top: 1rem;
     float: right; }
@@ -254,8 +302,48 @@ article.tweet {
       visibility: hidden;
       float: right;
       margin: 0.25rem 1rem; }
+      article.tweet footer .tweet-icons span {
+        border: 1px #D1D1D1 solid;
+        border-radius: 5px;
+        padding: 0.1rem 0.1rem 0.1rem 0.2rem;
+        margin-right: 0.1rem;
+        margin-top: 0.1rem;
+        background-color: #eee;
+        display: inline-block;
+        width: 3rem;
+        max-height: 3rem;
+        font-size: 0.75rem;
+        text-align: center;
+        overflow: hidden; }
+        article.tweet footer .tweet-icons span:hover {
+          background-color: #e8fdff;
+          cursor: pointer; }
+        @media screen and (max-width: 550px) {
+          article.tweet footer .tweet-icons span {
+            height: 3rem;
+            padding-top: 0.75rem; } }
+      article.tweet footer .tweet-icons .user-liked-tweet {
+        background-color: #00a087;
+        border-color: #24859f;
+        color: #fff; }
+        article.tweet footer .tweet-icons .user-liked-tweet:hover {
+          background-color: #24859f;
+          border-color: #24859f;
+          color: #fff; }
+      @media screen and (max-width: 550px) {
+        article.tweet footer .tweet-icons {
+          visibility: visible; } }
     article.tweet footer .tweet-warning-area {
-      font-size: 0.5rem; }
+      font-size: 0.5rem;
+      visibility: hidden; }
+      @media screen and (max-width: 550px) {
+        article.tweet footer .tweet-warning-area {
+          display: block;
+          padding-left: 1rem;
+          visibility: visible; } }
+    @media screen and (max-width: 550px) {
+      article.tweet footer {
+        height: 4rem; } }
   article.tweet .user-avatar {
     float: left;
     opacity: 0.75;
@@ -272,30 +360,8 @@ article.tweet {
       opacity: 1; }
     article.tweet:hover footer .tweet-icons {
       visibility: visible; }
-      article.tweet:hover footer .tweet-icons span {
-        border: 1px #D1D1D1 solid;
-        border-radius: 5px;
-        padding: 0.1rem 0.1rem 0.1rem 0.2rem;
-        margin-right: 0.1rem;
-        margin-top: 0.1rem;
-        background-color: #eee;
-        display: inline-block;
-        width: 3rem;
-        max-height: 3rem;
-        font-size: 0.75rem;
-        text-align: center;
-        overflow: hidden; }
-        article.tweet:hover footer .tweet-icons span:hover {
-          background-color: #e8fdff;
-          cursor: pointer; }
-      article.tweet:hover footer .tweet-icons .user-liked-tweet {
-        background-color: #00a087;
-        border-color: #24859f;
-        color: #fff; }
-        article.tweet:hover footer .tweet-icons .user-liked-tweet:hover {
-          background-color: #24859f;
-          border-color: #24859f;
-          color: #fff; }
+    article.tweet:hover .tweet-warning-area {
+      visibility: visible; }
 
 span.created-at {
   display: inline-block;

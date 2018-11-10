@@ -45,10 +45,58 @@ article.tweet {
       visibility: hidden;
       float: right;
       margin: $size-tiniest $size-below-small;
+
+      span {
+        border: 1px $color-concretegrey solid;
+        border-radius: 5px;
+        padding: 0.1rem 0.1rem 0.1rem 0.2rem;
+        margin-right: 0.1rem;
+        margin-top: 0.1rem;
+        background-color: $color-light-grey;
+        display: inline-block;
+        width: 3rem;
+        max-height: 3rem;
+        font-size: 0.75rem;
+        text-align: center;
+        overflow: hidden;
+
+        &:hover {
+          background-color: $color-vlightblue;
+          cursor: pointer;
+        }
+        @media screen and (max-width: 550px) {
+          height: 3rem;
+          padding-top: 0.75rem;
+        }
+      }
+
+      .user-liked-tweet {
+        background-color: $color-turquoise;
+        border-color: $color-blueish;
+        color: $color-white;
+
+        &:hover {
+          background-color: $color-blueish;
+          border-color: $color-blueish;
+          color: $color-white;
+        }
+      }
+      @media screen and (max-width: 550px) {
+        visibility: visible;
+      }
     }
 
     .tweet-warning-area {
       font-size: 0.5rem;
+      visibility: hidden;
+      @media screen and (max-width: 550px) {
+        display: block;
+        padding-left: 1rem;
+        visibility: visible;
+      }
+    }
+    @media screen and (max-width: 550px) {
+      height: 4rem;
     }
   }
 
@@ -77,38 +125,10 @@ article.tweet {
 
     footer .tweet-icons {
       visibility: visible;
+    }
 
-      span {
-        border: 1px $color-concretegrey solid;
-        border-radius: 5px;
-        padding: 0.1rem 0.1rem 0.1rem 0.2rem;
-        margin-right: 0.1rem;
-        margin-top: 0.1rem;
-        background-color: $color-light-grey;
-        display: inline-block;
-        width: 3rem;
-        max-height: 3rem;
-        font-size: 0.75rem;
-        text-align: center;
-        overflow: hidden;
-
-        &:hover {
-          background-color: $color-vlightblue;
-          cursor: pointer;
-        }
-      }
-
-      .user-liked-tweet {
-        background-color: $color-turquoise;
-        border-color: $color-blueish;
-        color: $color-white;
-
-        &:hover {
-          background-color: $color-blueish;
-          border-color: $color-blueish;
-          color: $color-white;
-        }
-      }
+    .tweet-warning-area {
+      visibility: visible;
     }
   }
 }
