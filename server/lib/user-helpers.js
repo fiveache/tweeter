@@ -41,6 +41,7 @@ module.exports = function userHelpers(db, ObjectID) {
     },
 
     createUser: function(username, password, callback) {
+      // TODO: This is synchronous: come back....
       const hashed = bcrypt.hashSync(password, 4);
       db.collection('users').insertOne({
         'username': username,
