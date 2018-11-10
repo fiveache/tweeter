@@ -27,7 +27,6 @@ app.use(express.static("public"));
 // === MONGO CONNECTION ===
 
 const MONGODB_URI = `mongodb://${process.env.DB_USER}:${process.env.DB_PASS}${process.env.DB_HOST}`;
-console.log(MONGODB_URI);
 const mongoDB = MongoClient.connect(MONGODB_URI, (err, db) => {
   if (err) {
     console.error(`Failed to connect.`);
