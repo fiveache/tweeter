@@ -4,7 +4,7 @@ nav#nav-bar
     span.header Tweeter
   if user
     span.userGreeting Hello, #{user}!
-    span.compose-button Compose
+    span.compose-button 📝 Compose
     form(action="/logout" method="POST")
       button.logout-button(type="submit" value="Logout") Logout
   else
