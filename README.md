@@ -26,7 +26,7 @@ Install all Dependencies (using `npm install` command).
 ```
 npm install
 ```
-Create a .env file in the root of the project by running touch .env.
+Create a .env file in the root of the project by running `touch .env`.
 ```
 touch .env
 ```
@@ -38,13 +38,15 @@ For example,
 ```
 SESSION_SECRET='1A2B3C4D5E6F7'
 ```
-in `server/index.js`, configure the variable `MONGODB_URI` to `mongodb://localhost:27017/tweeter`:
+in `server/index.js`, configure the value of the variable `MONGODB_URI` to `mongodb://localhost:27017/tweeter`:
 
 ```
 const MONGODB_URI=mongodb://localhost:27017/tweeter;
 ```
-
-
+Boot up your server by running:
+```
+npm run local
+```
 
 ## Dependencies
 
