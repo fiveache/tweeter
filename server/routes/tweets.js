@@ -16,7 +16,6 @@ module.exports = function(DataHelpers, UserHelpers, LikeTweetsHelper) {
         });
       } else {
         if (!isLoggedIn) {
-
           res.json({
             tweets,
             isLoggedIn
@@ -94,42 +93,51 @@ module.exports = function(DataHelpers, UserHelpers, LikeTweetsHelper) {
         error: 'invalid request: must be logged in.'
       });
     } else {
-      UserHelpers.getUserLikes(currentUser, (err, likes) => {
-        if (likes.includes(tweetId)) {
-          UserHelpers.removeUserLikes(currentUser, tweetId, (err, removed) => {
-            if (err) {
-              res.status(500).json({
-                error: err.message
-              });
-            }
-            LikeTweetsHelper.unlikeTweet(tweetId, () => {
-              if (err) {
-                res.status(500).json({
-                  error: err.message
-                });
-              }
-              res.status(204).send();
-            })
+      LikeTweetsHelper.isAuthorsTweet(tweetId, currentUser, (err, isAuthors) => {
+        if (isAuthors) {
+          res.status(401).json({
+            error: 'Cannot like own tweet'
           });
         } else {
-          LikeTweetsHelper.likeTweet(tweetId, (err, data) => {
-            if (err) {
-              res.status(500).json({
-                error: err.message
+          UserHelpers.getUserLikes(currentUser, (err, likes) => {
+            if (likes.includes(tweetId)) {
+              UserHelpers.removeUserLikes(currentUser, tweetId, (err, removed) => {
+                if (err) {
+                  res.status(500).json({
+                    error: err.message
+                  });
+                }
+                LikeTweetsHelper.unlikeTweet(tweetId, () => {
+                  if (err) {
+                    res.status(500).json({
+                      error: err.message
+                    });
+                  }
+                  res.status(204).send();
+                })
               });
             } else {
-              UserHelpers.addUserLikes(res.locals.currentUser, tweetId, (err, update) => {
+              LikeTweetsHelper.likeTweet(tweetId, (err, data) => {
                 if (err) {
                   res.status(500).json({
                     error: err.message
                   });
                 } else {
-                  res.status(201).send();
+                  UserHelpers.addUserLikes(res.locals.currentUser, tweetId, (err, update) => {
+                    if (err) {
+                      res.status(500).json({
+                        error: err.message
+                      });
+                    } else {
+                      res.status(201).send();
+                    }
+                  });
                 }
               });
             }
           });
         }
+        // END ELSE
       });
     }
   });
