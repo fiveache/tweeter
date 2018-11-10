@@ -15,34 +15,34 @@ This project is configured for deployment on Heroku. It will require some config
 
 ### installation
 Clone this repository to your local disk:
-``
+```
 git clone https://github.com/fiveache/tweeter.git
-``
+```
 change into directory `tweeter`
-``
+```
 cd tweeter
-``
+```
 Install all Dependencies (using `npm install` command).
-``
+```
 npm install
-``
+```
 Create a .env file in the root of the TinyApp project by running touch .env.
-``
+```
 touch .env
-``
+```
 Create a variable called `SESSION_SECRET` in your `.env` file. Key will be used by the `express-session` dependency:
-``
+```
 SESSION_SECRET='<KEY>'
-``
+```
 For example,
-``
+```
 SESSION_SECRET='1A2B3C4D5E6F7'
-``
+```
 in `server/index.js`, configure the variable `MONGODB_URI` to `mongodb://localhost:27017/tweeter`:
 
-``
+```
 const MONGODB_URI=mongodb://localhost:27017/tweeter;
-``
+```
 
 
 
