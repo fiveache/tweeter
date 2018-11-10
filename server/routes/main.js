@@ -111,13 +111,5 @@ module.exports = function(userHelpers) {
     }
   });
 
-  main.get('/isLoggedIn', (req, res) => {
-    if (res.locals.currentUser) {
-      res.status(200).send();
-    } else {
-      res.status(403).send();
-    }
-  })
-
   return main;
 }

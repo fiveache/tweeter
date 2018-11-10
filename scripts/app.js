@@ -111,18 +111,28 @@ $(document).ready(() => {
   $('#tweet-container').on('click', '.like-count', function(e) {
     const _id = $(e.target).data('ref');
     let value = Number($(e.target).text().match(/\d/g).join(''));
-    value++;
+
     $.ajax({
       type: 'POST',
       url: `/tweets/like`,
       data: {
         id: _id
       }
-    }).then((err, data) => {
+    }).then((err, data, jqXHR) => {
       if (err) {
         console.log(err)
       }
-      $(e.target).text(`${value} 👍`);
+
+      if (jqXHR.status === 201) {
+        value++;
+        $(e.target).text(`${value} 👍`);
+      }
+
+      if (jqXHR.status === 204) {
+        value--;
+        $(e.target).text(`${value} 👍`);
+      }
+
     });
   });
 

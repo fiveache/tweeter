@@ -86,11 +86,26 @@ module.exports = function userHelpers(db, ObjectID) {
       });
     },
 
-    updateUserLikes: function(userID, tweetId, callback) {
+    addUserLikes: function(userID, tweetId, callback) {
       db.collection('users').updateOne({
         _id: ObjectID(userID)
       }, {
         $push: {
+          likes: tweetId
+        }
+      }, (err, docs) => {
+        if (err) {
+          callback(err);
+        }
+        callback(null, true);
+      });
+    },
+
+    removeUserLikes: function(userID, tweetId, callback) {
+      db.collection('users').updateOne({
+        _id: ObjectID(userID)
+      }, {
+        $pull: {
           likes: tweetId
         }
       }, (err, docs) => {

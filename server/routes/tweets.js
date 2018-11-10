@@ -15,7 +15,10 @@ module.exports = function(DataHelpers, UserHelpers, LikeTweetsHelper) {
           error: err.message
         });
       } else {
-        res.json({tweets, isLoggedIn});
+        res.json({
+          tweets,
+          isLoggedIn
+        });
       }
     });
   });
@@ -77,7 +80,23 @@ module.exports = function(DataHelpers, UserHelpers, LikeTweetsHelper) {
     } else {
       UserHelpers.getUserLikes(currentUser, (err, likes) => {
         if (likes.includes(tweetId)) {
-          // USER LIKED ALREADY! DO SHIT HERE
+          // USER LIKED ALREADY!
+
+          UserHelpers.removeUserLikes(currentUser, tweetId, (err, removed) => {
+            if (err) {
+              res.status(500).json({
+                error: err.message
+              });
+            }
+            LikeTweetsHelper.unlikeTweet(tweetId, () => {
+              if (err) {
+                res.status(500).json({
+                  error: err.message
+                });
+              }
+              res.status(204).send();
+            })
+          });
         } else {
           LikeTweetsHelper.likeTweet(tweetId, (err, data) => {
             if (err) {
@@ -85,7 +104,7 @@ module.exports = function(DataHelpers, UserHelpers, LikeTweetsHelper) {
                 error: err.message
               });
             } else {
-              UserHelpers.updateUserLikes(res.locals.currentUser, tweetId, (err, update) => {
+              UserHelpers.addUserLikes(res.locals.currentUser, tweetId, (err, update) => {
                 if (err) {
                   res.status(500).json({
                     error: err.message
